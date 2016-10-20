@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SettingItem">
+        <!--左图标的属性-->
+        <attr name="isLeftIcon" format="boolean"/>
+        <attr name="leftIconId" format="reference"/>
+        <attr name="leftIconWidth" format="dimension"/>
+        <attr name="leftIconHeight" format="dimension"/>
+        <attr name="leftIconMarginLeft" format="dimension"/>
+        <!--左文字的属性-->
+        <attr name="isLeftTextView" format="boolean"/>
+        <attr name="leftText" format="string"/>
+        <attr name="leftTextMarginLeft" format="dimension"/>
+        <!--main文字的属性-->
+        <attr name="isMainTextView" format="boolean"/>
+        <attr name="mainText" format="string"/>
+        <attr name="mainTextMarginTop" format="dimension"/>
+        <!--next文字的属性-->
+        <attr name="isNextTextView" format="boolean"/>
+        <attr name="nextText" format="string"/>
+        <attr name="nextTextMarginBottom" format="dimension"/>
+        <!--右文字的属性-->
+        <attr name="isRightTextView" format="boolean"/>
+        <attr name="rightText" format="string"/>
+        <attr name="rightTextMarginRight" format="dimension"/>
+        <!--右图标的属性-->
+        <attr name="isRightIcon" format="boolean"/>
+        <attr name="rightIconId" format="reference"/>
+        <attr name="rightIconWidth" format="dimension"/>
+        <attr name="rightIconHeight" format="dimension"/>
+        <attr name="rightIconMarginRight" format="dimension"/>
+        <!--ToggleButton的属性-->
+        <attr name="isToggleButton" format="boolean"/>
+        <!--右边文字和图片的位置-->
+        <attr name="isRightFirst" format="boolean"/>
+    </declare-styleable>
+</resources>

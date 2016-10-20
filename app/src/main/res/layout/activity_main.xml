@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.utouu.settingitem.MainActivity">
+
+    <com.utouu.settingitem.widget.SettingItem xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/settingItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/settingitem_selector"
+        android:padding="5dp"
+        app:isToggleButton="true"
+        app:leftIconHeight="20dp"
+        app:leftIconId="@drawable/item_paymethod_alipay"
+        app:leftIconMarginLeft="5dp"
+        app:leftIconWidth="20dp"
+        app:leftText="支付方式"
+        app:leftTextMarginLeft="5dp"
+        app:mainText="安啦"
+        app:isNextTextView="true"
+        app:nextText="keyi"
+        app:rightIconHeight="10dp"
+        app:rightIconId="@drawable/right_arrow"
+        app:rightIconMarginRight="10dp"
+        app:rightIconWidth="10dp"
+        app:rightText="厉害"
+        app:rightTextMarginRight="5dp" />
+
+    <com.utouu.settingitem.widget.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:isRightTextView="false"
+        app:leftIconHeight="20dp"
+        app:leftIconId="@drawable/redbag"
+        app:leftIconMarginLeft="5dp"
+        app:leftIconWidth="20dp"
+        app:leftText="红包"
+        app:leftTextMarginLeft="10dp"
+        app:rightIconHeight="15dp"
+        app:rightIconId="@drawable/right_arrow"
+        app:rightIconMarginRight="5dp"
+        app:rightIconWidth="15dp" />
+
+    <com.utouu.settingitem.widget.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:isLeftIcon="false"
+        app:isToggleButton="true"
+        app:leftText="回车键发送消息"
+        app:leftTextMarginLeft="10dp" />
+
+    <com.utouu.settingitem.widget.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:leftText="多语言"
+        app:leftTextMarginLeft="10dp"
+        app:rightIconHeight="15dp"
+        app:rightIconId="@drawable/right_arrow"
+        app:rightIconMarginRight="5dp"
+        app:rightIconWidth="15dp"
+        app:rightText="跟随系统"
+        app:rightTextMarginRight="5dp" />
+
+    <com.utouu.settingitem.widget.SettingItem
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mainText="退出登录" />
+
+    <com.utouu.settingitem.widget.SettingItem
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:leftIconHeight="20dp"
+        app:leftIconId="@drawable/home"
+        app:leftIconMarginLeft="5dp"
+        app:leftIconWidth="20dp"
+        app:mainText="上海悠唐软件技术有限公司"
+        app:isNextTextView="true"
+        app:nextText="高级认证企业, 等级V6"
+        app:rightIconHeight="15dp"
+        app:rightIconId="@drawable/right_arrow"
+        app:rightIconWidth="15dp"
+        app:rightIconMarginRight="5dp"
+        />
+
+    <ToggleButton
+        android:id="@+id/toggleBtn"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:background="#00000000"
+        android:button="@drawable/toggle_selector"
+        android:textOff=""
+        android:textOn="" />
+    <ImageView
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
