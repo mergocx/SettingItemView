@@ -1,4 +1,4 @@
-package com.utouu.settingitem.widget;
+package com.chenxin.sivlibary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
-import com.utouu.settingitem.R;
 
 import static android.content.ContentValues.TAG;
 
@@ -31,7 +29,7 @@ public class SettingItem extends LinearLayout {
     private int leftIconId, rightIconId;
     private float leftIconWidth, leftIconHeight, rightIconWidth, rightIconHeight;
     private float leftIconMarginLeft, rightIconMarginRight;
-    private boolean isLeftIcon, isRightIcon, isToggleButton,isRightFirst;
+    private boolean isLeftIcon, isRightIcon, isToggleButton, isRightFirst;
 
     private String leftText;
     private String rightText;
@@ -43,16 +41,31 @@ public class SettingItem extends LinearLayout {
     private float rightTextMarginRight;
     private boolean isLeftTextView, isRightTextView, isMainTextView, isNextTextView;
     private OnToggleButtonChecked onToggleButtonChecked;
+    private OnSettingItemClick onSettingItemClick;
+
+    public void setOnSettingItemClick(OnSettingItemClick onSettingItemClick) {
+        this.onSettingItemClick = onSettingItemClick;
+    }
 
     public void setOnToggleButtonChecked(OnToggleButtonChecked onToggleButtonChecked) {
         this.onToggleButtonChecked = onToggleButtonChecked;
     }
 
+    /**
+     * 说明方法的作用
+     * ToggleButton的状态变化的监听
+     */
     public interface OnToggleButtonChecked {
         void onOpen();
 
         void onClose();
+    }
 
+    /**
+    * 说明方法的作用
+    * 监听SettingItem是否被点击
+    */
+    public interface OnSettingItemClick {
         void onSettingItemClick();
     }
 
@@ -73,15 +86,15 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 将属性值读取出来
-    */
+     * 说明方法的作用
+     * 将属性值读取出来
+     */
     private void initData(Context context, AttributeSet attrs) {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onToggleButtonChecked != null) {
-                    onToggleButtonChecked.onSettingItemClick();
+                if (onSettingItemClick != null) {
+                    onSettingItemClick.onSettingItemClick();
                 }
             }
         });
@@ -91,13 +104,13 @@ public class SettingItem extends LinearLayout {
             TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.SettingItem);
             isLeftIcon = tArray.getBoolean(R.styleable.SettingItem_isLeftIcon, true);
             leftIconId = tArray.getResourceId(R.styleable.SettingItem_leftIconId, 0);
-            leftIconWidth = tArray.getLayoutDimension(R.styleable.SettingItem_leftIconWidth, 0);
-            leftIconHeight = tArray.getLayoutDimension(R.styleable.SettingItem_leftIconHeight, 0);
-            leftIconMarginLeft = tArray.getLayoutDimension(R.styleable.SettingItem_leftIconMarginLeft, 0);
+            leftIconWidth = tArray.getDimension(R.styleable.SettingItem_leftIconWidth, 0);
+            leftIconHeight = tArray.getDimension(R.styleable.SettingItem_leftIconHeight, 0);
+            leftIconMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftIconMarginLeft, 0);
 
             isLeftTextView = tArray.getBoolean(R.styleable.SettingItem_isLeftTextView, true);
             leftText = tArray.getString(R.styleable.SettingItem_leftText);
-            leftTextMarginLeft = tArray.getLayoutDimension(R.styleable.SettingItem_leftTextMarginLeft, 0);
+            leftTextMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftTextMarginLeft, 0);
 
             isMainTextView = tArray.getBoolean(R.styleable.SettingItem_isMainTextView, true);
             mainText = tArray.getString(R.styleable.SettingItem_mainText);
@@ -119,7 +132,7 @@ public class SettingItem extends LinearLayout {
 
             isToggleButton = tArray.getBoolean(R.styleable.SettingItem_isToggleButton, false);
 
-            isRightFirst = tArray.getBoolean(R.styleable.SettingItem_isRightFirst,true);
+            isRightFirst = tArray.getBoolean(R.styleable.SettingItem_isRightFirst, true);
             tArray.recycle();
         }
     }
@@ -135,9 +148,9 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 所有子view的设置和初始化
-    */
+     * 说明方法的作用
+     * 所有子view的设置和初始化
+     */
     private void initLayout() {
         if (isLeftIcon) {
             leftIcon = new ImageView(getContext());
@@ -187,7 +200,7 @@ public class SettingItem extends LinearLayout {
         if (isRightFirst) {
             initRightText();
             initRightIcon();
-        }else {
+        } else {
             initRightIcon();
             initRightText();
         }
@@ -195,9 +208,9 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 开关的初始化设置
-    */
+     * 说明方法的作用
+     * 开关的初始化设置
+     */
     private void initToggleButton() {
         if (isToggleButton) {
             LayoutParams tButtonParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -226,9 +239,9 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 右侧图片的初始化
-    */
+     * 说明方法的作用
+     * 右侧图片的初始化
+     */
     private void initRightIcon() {
         if (isRightIcon) {
             rightIcon.setImageResource(rightIconId);
@@ -240,9 +253,9 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 右侧文字的初始化
-    */
+     * 说明方法的作用
+     * 右侧文字的初始化
+     */
     private void initRightText() {
         if (isRightTextView) {
             rightTextView.setText(rightText);
@@ -269,44 +282,67 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用  设置左文字的一系列的信息
-    * @param leftText 设置左文字的信息
-    * @param color 设置左文字的颜色
-    * @param size 设置左文字的大小
-    */
-    public void setLeftText(String leftText,int color,int size) {
+     * 说明方法的作用  设置左文字的一系列的信息
+     *
+     * @param leftText 设置左文字的信息
+     * @param color    设置左文字的颜色
+     * @param size     设置左文字的大小
+     */
+    public void setLeftText(String leftText, int color, int size) {
         leftTextView.setText(leftText);
         leftTextView.setTextColor(color);
         leftTextView.setTextSize(size);
     }
 
     /**
-    * 说明方法的作用
-    * 设置右边文字的展示内容,颜色,大小
-    */
-    public void setRightText(String rightText,int color,int size) {
+     * 说明方法的作用
+     * 设置右边文字的展示内容,颜色,大小
+     */
+    public void setRightText(String rightText, int color, int size) {
         rightTextView.setText(rightText);
         rightTextView.setTextColor(color);
         rightTextView.setTextSize(size);
     }
 
     /**
-    * 说明方法的作用
-    * 中间上部文字的展示内容,颜色和大小
-    */
-    public void setMainText(String mainText,int color,int size) {
+     * 说明方法的作用
+     * 中间上部文字的展示内容,颜色和大小
+     */
+    public void setMainText(String mainText, int color, int size) {
         mainTextView.setText(mainText);
         mainTextView.setTextColor(color);
         mainTextView.setTextSize(size);
     }
 
     /**
-    * 说明方法的作用
-    * 中间下部分文字的展示内容,颜色和大小
-    */
-    public void setNextText(String nextText,int color,int size) {
+     * 说明方法的作用
+     * 中间下部分文字的展示内容,颜色和大小
+     */
+    public void setNextText(String nextText, int color, int size) {
         nextTextView.setText(nextText);
         nextTextView.setTextColor(color);
         nextTextView.setTextSize(size);
+    }
+
+    /**
+     * 说明方法的作用
+     * 获取toggleButton的开关状态
+     */
+    public boolean getToggleButtonState() {
+        boolean checked = false;
+        if (toggleButton != null) {
+            checked = toggleButton.isChecked();
+        }
+        return checked;
+    }
+
+    /**
+     * 说明方法的作用
+     * 设置toggleButton的状态
+     */
+    public void setToggleButtonState(boolean state) {
+        if (toggleButton != null) {
+            toggleButton.setChecked(state);
+        }
     }
 }

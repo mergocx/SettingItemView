@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.utouu.settingitem.MainActivity">
 
-    <com.utouu.settingitem.widget.SettingItem xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.chenxin.sivlibary.SettingItem xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/settingItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,14 +25,14 @@
         app:mainText="安啦"
         app:isNextTextView="true"
         app:nextText="keyi"
-        app:rightIconHeight="10dp"
+        app:rightIconHeight="15dp"
         app:rightIconId="@drawable/right_arrow"
-        app:rightIconMarginRight="10dp"
-        app:rightIconWidth="10dp"
+        app:rightIconMarginRight="5dp"
+        app:rightIconWidth="15dp"
         app:rightText="厉害"
         app:rightTextMarginRight="5dp" />
 
-    <com.utouu.settingitem.widget.SettingItem
+    <com.chenxin.sivlibary.SettingItem
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -48,21 +48,21 @@
         app:rightIconMarginRight="5dp"
         app:rightIconWidth="15dp" />
 
-    <com.utouu.settingitem.widget.SettingItem
+    <com.chenxin.sivlibary.SettingItem
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         app:isLeftIcon="false"
         app:isToggleButton="true"
         app:leftText="回车键发送消息"
-        app:leftTextMarginLeft="10dp" />
+        app:leftTextMarginLeft="5dp" />
 
-    <com.utouu.settingitem.widget.SettingItem
+    <com.chenxin.sivlibary.SettingItem
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         app:leftText="多语言"
-        app:leftTextMarginLeft="10dp"
+        app:leftTextMarginLeft="5dp"
         app:rightIconHeight="15dp"
         app:rightIconId="@drawable/right_arrow"
         app:rightIconMarginRight="5dp"
@@ -70,13 +70,13 @@
         app:rightText="跟随系统"
         app:rightTextMarginRight="5dp" />
 
-    <com.utouu.settingitem.widget.SettingItem
+    <com.chenxin.sivlibary.SettingItem
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:mainText="退出登录" />
 
-    <com.utouu.settingitem.widget.SettingItem
+    <com.chenxin.sivlibary.SettingItem
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -92,19 +92,14 @@
         app:rightIconWidth="15dp"
         app:rightIconMarginRight="5dp"
         />
-
-    <ToggleButton
-        android:id="@+id/toggleBtn"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:background="#00000000"
-        android:button="@drawable/toggle_selector"
-        android:textOff=""
-        android:textOn="" />
-    <ImageView
-        android:padding="5dp"
-        android:layout_marginLeft="5dp"
-        android:src="@drawable/home"
+    <TextView
+        android:background="#f00"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="20dp"
+        android:text="适配没有?"
+        />
+    <ListView
+        android:id="@+id/lv_siv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
