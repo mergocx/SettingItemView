@@ -7,7 +7,7 @@
 		>>repositories 
 			>>>...
 			>>>maven { url "https://jitpack.io" }
-		}<br>
+		}
 	}
   
   dependencies {
@@ -27,7 +27,6 @@
     settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
     ```
 **3.2 示例代码**
-	```
     <com.chenxin.sivlibary.SettingItem xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/settingItem"
         android:layout_width="match_parent"
@@ -51,8 +50,7 @@
         app:rightIconWidth="15dp"
         app:rightText="厉害"
         app:rightTextMarginRight="5dp" />
-        ```
-	```
+
         settingItem.setOnSettingItemClick(new SettingItem.OnSettingItemClick() {
             @Override
             public void onSettingItemClick() {
@@ -63,4 +61,3 @@
         settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
         settingItem.setLeftIcon(false);
         settingItem.setBackgroundResource(R.drawable.item_shape_normal);
-	```
