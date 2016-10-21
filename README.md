@@ -21,9 +21,13 @@
     
  
 #### 三、使用
+
 **3.1 提供方法**
+
 	//设置了左侧文字的属性
+	
 	settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
+	
 **3.2 示例代码**
 	
 	xmlns:app="http://schemas.android.com/apk/res-auto"
