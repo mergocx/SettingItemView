@@ -14,7 +14,9 @@
 		compile 'com.github.starmeigo:SettingItemView:V1.0.1'
 	}
 **1.2 功能说明**
+
     1,通过属性的设置,可以展示不同的条目的效果
+    
     2,可以在xml文件中设置,也可以在Java代码中设置
  
 #### 二、截图
