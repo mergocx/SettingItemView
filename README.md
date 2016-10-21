@@ -3,15 +3,15 @@
 #### 一、简介：
 **1.1 Gradle集成**
   
-  allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
+  >allprojects {
+		>>repositories 
+			>>>...
+			>>>maven { url "https://jitpack.io" }
+		}<br>
 	}
   
   dependencies {
-	        compile 'com.github.starmeigo:SettingItemView:V1.0.0'
+	        compile 'com.github.starmeigo:SettingItemView:V1.0.1'
 	}
 **1.2 功能说明**
     1,通过属性的设置,可以展示不同的条目的效果
@@ -23,8 +23,11 @@
 #### 三、使用
 **3.1 提供方法**
     //设置了左侧文字的属性
+    ```
     settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
+    ```
 **3.2 示例代码**
+	```
     <com.chenxin.sivlibary.SettingItem xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/settingItem"
         android:layout_width="match_parent"
@@ -48,7 +51,8 @@
         app:rightIconWidth="15dp"
         app:rightText="厉害"
         app:rightTextMarginRight="5dp" />
-        
+        ```
+	```
         settingItem.setOnSettingItemClick(new SettingItem.OnSettingItemClick() {
             @Override
             public void onSettingItemClick() {
@@ -59,4 +63,4 @@
         settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
         settingItem.setLeftIcon(false);
         settingItem.setBackgroundResource(R.drawable.item_shape_normal);
-        
+	```
