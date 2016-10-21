@@ -25,6 +25,7 @@
 	//设置了左侧文字的属性
 	settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
 **3.2 示例代码**
+	
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/settingItem"
 	android:layout_width="match_parent"
