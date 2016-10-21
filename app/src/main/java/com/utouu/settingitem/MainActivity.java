@@ -33,11 +33,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClose() {
                 Toast.makeText(MainActivity.this, "关闭", Toast.LENGTH_SHORT).show();
             }
-
-            @Override
-            public void onSettingItemClick() {
-                Toast.makeText(MainActivity.this, "点击了", Toast.LENGTH_SHORT).show();
-            }
         });
         //settingItem.setLeftText("你好啊");
         settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
