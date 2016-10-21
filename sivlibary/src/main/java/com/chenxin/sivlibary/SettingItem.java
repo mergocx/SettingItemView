@@ -23,13 +23,25 @@ import static android.content.ContentValues.TAG;
 
 public class SettingItem extends LinearLayout {
 
-    private ImageView leftIcon, rightIcon;
-    private TextView leftTextView, rightTextView, mainTextView, nextTextView;
+    private ImageView leftIcon;
+    private ImageView rightIcon;
+    private TextView leftTextView;
+    private TextView rightTextView;
+    private TextView mainTextView;
+    private TextView nextTextView;
     private ToggleButton toggleButton;
-    private int leftIconId, rightIconId;
-    private float leftIconWidth, leftIconHeight, rightIconWidth, rightIconHeight;
-    private float leftIconMarginLeft, rightIconMarginRight;
-    private boolean isLeftIcon, isRightIcon, isToggleButton, isRightFirst;
+    private int leftIconId;
+    private int rightIconId;
+    private float leftIconWidth;
+    private float leftIconHeight;
+    private float rightIconWidth;
+    private float rightIconHeight;
+    private float leftIconMarginLeft;
+    private float rightIconMarginRight;
+    private boolean isLeftIcon;
+    private boolean isRightIcon;
+    private boolean isToggleButton;
+    private boolean isRightFirst;
 
     private String leftText;
     private String rightText;
@@ -39,9 +51,13 @@ public class SettingItem extends LinearLayout {
     private float mainTextMarginTop;
     private float nextTextMarginBottom;
     private float rightTextMarginRight;
-    private boolean isLeftTextView, isRightTextView, isMainTextView, isNextTextView;
+    private boolean isLeftTextView;
+    private boolean isRightTextView;
+    private boolean isMainTextView;
+    private boolean isNextTextView;
     private OnToggleButtonChecked onToggleButtonChecked;
     private OnSettingItemClick onSettingItemClick;
+    private Context context;
 
     public void setOnSettingItemClick(OnSettingItemClick onSettingItemClick) {
         this.onSettingItemClick = onSettingItemClick;
@@ -90,6 +106,7 @@ public class SettingItem extends LinearLayout {
      * 将属性值读取出来
      */
     private void initData(Context context, AttributeSet attrs) {
+        this.context = context;
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,12 +156,12 @@ public class SettingItem extends LinearLayout {
 
     private void initView() {
         setOrientation(HORIZONTAL);
-        rightIcon = new ImageView(getContext());
-        toggleButton = new ToggleButton(getContext());
-        leftTextView = new TextView(getContext());
-        rightTextView = new TextView(getContext());
-        mainTextView = new TextView(getContext());
-        nextTextView = new TextView(getContext());
+        rightIcon = new ImageView(context);
+        toggleButton = new ToggleButton(context);
+        leftTextView = new TextView(context);
+        rightTextView = new TextView(context);
+        mainTextView = new TextView(context);
+        nextTextView = new TextView(context);
     }
 
     /**
@@ -343,6 +360,104 @@ public class SettingItem extends LinearLayout {
     public void setToggleButtonState(boolean state) {
         if (toggleButton != null) {
             toggleButton.setChecked(state);
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置左侧图标的显示与隐藏
+    */
+    public void setLeftIcon(boolean hasLeftIcon) {
+        if (leftIcon != null) {
+            if (hasLeftIcon) {
+                leftIcon.setVisibility(View.VISIBLE);
+            }else {
+                leftIcon.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    *  设置右侧图标的显示与隐藏
+    */
+    public void setRightIcon(boolean hasRightIcon) {
+        if (rightIcon != null) {
+            if (hasRightIcon) {
+                rightIcon.setVisibility(View.VISIBLE);
+            }else {
+                rightIcon.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置ToggleButton的现实与隐藏
+    */
+    public void setToggleButton(boolean hasToggleButton) {
+        if (toggleButton != null) {
+            if (hasToggleButton) {
+                toggleButton.setVisibility(View.VISIBLE);
+            }else {
+                toggleButton.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置左侧文字的显示与隐藏
+    */
+    public void setLeftTextView(boolean hasLeftTextView) {
+        if (leftTextView != null) {
+            if (hasLeftTextView) {
+                leftTextView.setVisibility(View.VISIBLE);
+            }else {
+                leftTextView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置右侧的文字显示与隐藏
+    */
+    public void setRightTextView(boolean hasRightTextView) {
+        if (rightTextView != null) {
+            if (hasRightTextView) {
+                rightTextView.setVisibility(View.VISIBLE);
+            }else {
+                rightTextView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置中间上方的文字显示与隐藏
+    */
+    public void setMainTextView(boolean hasMainTextView) {
+        if (mainTextView!=null) {
+            if (hasMainTextView) {
+                mainTextView.setVisibility(View.VISIBLE);
+            }else {
+                mainTextView.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置中间下方的文字显示与隐藏
+    */
+    public void setNextTextView(boolean hasNextTextView) {
+        if (nextTextView!= null) {
+            if (hasNextTextView) {
+                nextTextView.setVisibility(View.VISIBLE);
+            }else {
+                nextTextView.setVisibility(View.GONE);
+            }
         }
     }
 }

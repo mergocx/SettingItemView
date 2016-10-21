@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         settingItem = (SettingItem) findViewById(R.id.settingItem);
+        //ToggleButton状态改变时候的监听器
         settingItem.setOnToggleButtonChecked(new SettingItem.OnToggleButtonChecked() {
             @Override
             public void onOpen() {
@@ -34,8 +35,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "关闭", Toast.LENGTH_SHORT).show();
             }
         });
+        //整个条目的点击事件
+        settingItem.setOnSettingItemClick(new SettingItem.OnSettingItemClick() {
+            @Override
+            public void onSettingItemClick() {
+                Toast.makeText(MainActivity.this, "我被点击了", Toast.LENGTH_SHORT).show();
+            }
+        });
         //settingItem.setLeftText("你好啊");
         settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
+        //settingItem.setLeftIcon(false);
         //settingItem.setBackgroundResource(R.drawable.item_shape_normal);
         listView = (ListView) findViewById(R.id.lv_siv);
         listView.setAdapter(new BaseAdapter() {
