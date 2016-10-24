@@ -26,7 +26,7 @@
 
 **3.1 提供方法**
 
-	<div>
+<div>
     <table border="0">
       <tr>
         <th>xml属性</th>
@@ -53,7 +53,7 @@
         <td>左侧图片距左侧的距离</td>
       </tr>
     </table>
-	</div>
+</div>
 	
 	//设置了左侧文字的属性
 	settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
