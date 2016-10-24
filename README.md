@@ -26,8 +26,36 @@
 
 **3.1 提供方法**
 
-	//设置了左侧文字的属性
+	<div>
+    <table border="0">
+      <tr>
+        <th>xml属性</th>
+        <th>功能</th>
+      </tr>
+      <tr>
+        <td>isLeftIconCX</td>
+        <td>左侧的图片是否显示</td>
+      </tr>
+      <tr>
+        <td>leftIconIdCX</td>
+        <td>左侧图片的资源id</td>
+      </tr>
+      <tr>
+        <td>leftIconWidthCX</td>
+        <td>左侧图片的宽</td>
+      </tr>
+       <tr>
+        <td>leftIconHeightCX</td>
+        <td>左侧图片的高</td>
+      </tr>
+      <tr>
+        <td>leftIconMarginLeftCX</td>
+        <td>左侧图片距左侧的距离</td>
+      </tr>
+    </table>
+	</div>
 	
+	//设置了左侧文字的属性
 	settingItem.setLeftText("我很好",getResources().getColor(R.color.colorPrimary),12);
 	
 **3.2 示例代码**
