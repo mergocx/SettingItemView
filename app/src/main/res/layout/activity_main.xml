@@ -15,6 +15,7 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/settingitem_selector"
         android:padding="5dp"
+        app:isNextTextViewCX="true"
         app:isToggleButtonCX="true"
         app:leftIconHeightCX="20dp"
         app:leftIconIdCX="@drawable/item_paymethod_alipay"
@@ -23,7 +24,6 @@
         app:leftTextCX="支付方式"
         app:leftTextMarginLeftCX="5dp"
         app:mainTextCX="安啦"
-        app:isNextTextViewCX="true"
         app:nextTextCX="keyi"
         app:rightIconHeightCX="15dp"
         app:rightIconIdCX="@drawable/right_arrow"
@@ -71,39 +71,38 @@
         app:rightTextMarginRightCX="5dp" />
 
     <com.chenxin.sivlibary.SettingItem
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         app:mainTextCX="退出登录" />
 
     <com.chenxin.sivlibary.SettingItem
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        app:leftIconHeightCX="20dp"
+        app:isNextTextViewCX="true"
         app:leftIconIdCX="@drawable/home"
         app:leftIconMarginLeftCX="5dp"
-        app:leftIconWidthCX="20dp"
         app:mainTextCX="上面的文字空气特别好"
-        app:isNextTextViewCX="true"
         app:nextTextCX="下面的文字感觉也不错,挺好的"
         app:rightIconHeightCX="15dp"
         app:rightIconIdCX="@drawable/right_arrow"
-        app:rightIconWidthCX="15dp"
         app:rightIconMarginRightCX="5dp"
-        />
+        app:rightIconWidthCX="15dp" />
+
     <TextView
-        android:background="#f00"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:text="适配没有?"
-        />
+        android:background="#f00"
+        android:text="适配没有?" />
+
     <ToggleButton
         android:id="@+id/toggle_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <ListView
         android:id="@+id/lv_siv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

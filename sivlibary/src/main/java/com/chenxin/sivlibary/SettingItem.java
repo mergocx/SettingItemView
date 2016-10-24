@@ -23,6 +23,7 @@ import static android.content.ContentValues.TAG;
 
 public class SettingItem extends LinearLayout {
 
+    private Context context;
     public static final int DefaultTextSize = 16;
     public static final int DefaultTextColor = Color.BLACK;
     public static final int DefaultHighTextSize = 18;
@@ -61,7 +62,6 @@ public class SettingItem extends LinearLayout {
     private boolean isNextTextView;
     private OnToggleButtonChecked onToggleButtonChecked;
     private OnSettingItemClick onSettingItemClick;
-    private Context context;
 
     public void setOnSettingItemClick(OnSettingItemClick onSettingItemClick) {
         this.onSettingItemClick = onSettingItemClick;
@@ -72,8 +72,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * ToggleButton的状态变化的监听
+     *
      */
     public interface OnToggleButtonChecked {
         void onOpen();
@@ -82,8 +82,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 监听SettingItem是否被点击
+     *
      */
     public interface OnSettingItemClick {
         void onSettingItemClick();
@@ -106,8 +106,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 将属性值读取出来
+     *
      */
     private void initData(Context context, AttributeSet attrs) {
         this.context = context;
@@ -125,8 +125,8 @@ public class SettingItem extends LinearLayout {
             TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.SettingItem);
             isLeftIcon = tArray.getBoolean(R.styleable.SettingItem_isLeftIconCX, true);
             leftIconId = tArray.getResourceId(R.styleable.SettingItem_leftIconIdCX, 0);
-            leftIconWidth = tArray.getDimension(R.styleable.SettingItem_leftIconWidthCX, 0);
-            leftIconHeight = tArray.getDimension(R.styleable.SettingItem_leftIconHeightCX, 0);
+            leftIconWidth = tArray.getDimension(R.styleable.SettingItem_leftIconWidthCX, DimensUtil.dp2px(20,context));
+            leftIconHeight = tArray.getDimension(R.styleable.SettingItem_leftIconHeightCX, DimensUtil.dp2px(20,context));
             leftIconMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftIconMarginLeftCX, 0);
 
             isLeftTextView = tArray.getBoolean(R.styleable.SettingItem_isLeftTextViewCX, true);
@@ -147,8 +147,8 @@ public class SettingItem extends LinearLayout {
 
             isRightIcon = tArray.getBoolean(R.styleable.SettingItem_isRightIconCX, true);
             rightIconId = tArray.getResourceId(R.styleable.SettingItem_rightIconIdCX, 0);
-            rightIconWidth = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconWidthCX, 0);
-            rightIconHeight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconHeightCX, 0);
+            rightIconWidth = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconWidthCX, DimensUtil.dp2px(15,context));
+            rightIconHeight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconHeightCX, DimensUtil.dp2px(15,context));
             rightIconMarginRight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconMarginRightCX, 0);
 
             isToggleButton = tArray.getBoolean(R.styleable.SettingItem_isToggleButtonCX, false);
@@ -160,15 +160,21 @@ public class SettingItem extends LinearLayout {
 
     private void initView() {
         setOrientation(HORIZONTAL);
+        leftIcon = new ImageView(getContext());
+        leftTextView = new TextView(context);
+        mainTextView = new TextView(context);
+        nextTextView = new TextView(context);
+        rightIcon = new ImageView(context);
+        rightTextView = new TextView(context);
+        toggleButton = new ToggleButton(context);
     }
 
     /**
-     * 说明方法的作用
      * 所有子view的设置和初始化
+     *
      */
     private void initLayout() {
         if (isLeftIcon) {
-            leftIcon = new ImageView(getContext());
             Log.e(TAG, "initLayout: leftIcon==true");
             leftIcon.setImageResource(leftIconId);
             LayoutParams leftIconParams = new LayoutParams((int) leftIconWidth, (int) leftIconHeight);
@@ -177,7 +183,6 @@ public class SettingItem extends LinearLayout {
             addView(leftIcon, leftIconParams);
         }
         if (isLeftTextView) {
-            leftTextView = new TextView(context);
             Log.e(TAG, "initLayout: leftText" + leftText);
             leftTextView.setText(leftText);
             LayoutParams leftTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -190,11 +195,10 @@ public class SettingItem extends LinearLayout {
         }
         LinearLayout linearLayout = new LinearLayout(getContext());
         linearLayout.setOrientation(VERTICAL);
-        LayoutParams llayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        llayoutParams.gravity = Gravity.CENTER;
-        llayoutParams.weight = 1;
+        LayoutParams lLayoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        lLayoutParams.gravity = Gravity.CENTER;
+        lLayoutParams.weight = 1;
         if (isMainTextView) {
-            mainTextView = new TextView(context);
             mainTextView.setText(mainText);
             LayoutParams mainTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -204,7 +208,6 @@ public class SettingItem extends LinearLayout {
             mainTextView.setTextColor(DefaultTextColor);
             linearLayout.addView(mainTextView, mainTextViewParams);
             if (isNextTextView) {
-                nextTextView = new TextView(context);
                 nextTextView.setText(nextText);
                 LayoutParams nextTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -215,7 +218,7 @@ public class SettingItem extends LinearLayout {
                 linearLayout.addView(nextTextView, nextTextViewParams);
             }
         }
-        addView(linearLayout, llayoutParams);
+        addView(linearLayout, lLayoutParams);
         if (isRightFirst) {
             initRightText();
             initRightIcon();
@@ -227,12 +230,11 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 开关的初始化设置
+     *
      */
     private void initToggleButton() {
         if (isToggleButton) {
-            toggleButton = new ToggleButton(context);
             LayoutParams tButtonParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             tButtonParams.gravity = Gravity.CENTER_VERTICAL;
@@ -259,12 +261,11 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 右侧图片的初始化
+     *
      */
     private void initRightIcon() {
         if (isRightIcon) {
-            rightIcon = new ImageView(context);
             rightIcon.setImageResource(rightIconId);
             LayoutParams rightIconParams = new LayoutParams((int) rightIconWidth, (int) rightIconHeight);
             rightIconParams.gravity = Gravity.CENTER_VERTICAL;
@@ -274,12 +275,11 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 右侧文字的初始化
+     *
      */
     private void initRightText() {
         if (isRightTextView) {
-            rightTextView = new TextView(context);
             rightTextView.setText(rightText);
             LayoutParams rightTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -304,7 +304,7 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用  设置左文字的一系列的信息
+     * 设置左文字的一系列的信息
      *
      * @param leftText 设置左文字的信息
      * @param color    设置左文字的颜色
@@ -317,8 +317,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置右边文字的展示内容,颜色,大小
+     *
      */
     public void setRightText(String rightText, int color, int size) {
         rightTextView.setText(rightText);
@@ -327,8 +327,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 中间上部文字的展示内容,颜色和大小
+     *
      */
     public void setMainText(String mainText, int color, int size) {
         mainTextView.setText(mainText);
@@ -337,8 +337,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 中间下部分文字的展示内容,颜色和大小
+     *
      */
     public void setNextText(String nextText, int color, int size) {
         nextTextView.setText(nextText);
@@ -347,8 +347,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 获取toggleButton的开关状态
+     *
      */
     public boolean getToggleButtonState() {
         boolean checked = false;
@@ -359,8 +359,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置toggleButton的状态
+     *
      */
     public void setToggleButtonState(boolean state) {
         if (toggleButton != null) {
@@ -369,8 +369,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置左侧图标的显示与隐藏
+     *
      */
     public void setLeftIcon(boolean hasLeftIcon) {
         if (leftIcon != null) {
@@ -383,8 +383,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置右侧图标的显示与隐藏
+     *
      */
     public void setRightIcon(boolean hasRightIcon) {
         if (rightIcon != null) {
@@ -397,8 +397,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置ToggleButton的现实与隐藏
+     *
      */
     public void setToggleButton(boolean hasToggleButton) {
         if (toggleButton != null) {
@@ -411,8 +411,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置左侧文字的显示与隐藏
+     *
      */
     public void setLeftTextView(boolean hasLeftTextView) {
         if (leftTextView != null) {
@@ -425,8 +425,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置右侧的文字显示与隐藏
+     *
      */
     public void setRightTextView(boolean hasRightTextView) {
         if (rightTextView != null) {
@@ -439,8 +439,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置中间上方的文字显示与隐藏
+     *
      */
     public void setMainTextView(boolean hasMainTextView) {
         if (mainTextView != null) {
@@ -453,8 +453,8 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-     * 说明方法的作用
      * 设置中间下方的文字显示与隐藏
+     *
      */
     public void setNextTextView(boolean hasNextTextView) {
         if (nextTextView != null) {
@@ -467,11 +467,11 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 设置toggleButton的样式
-    */
-    public void setToggleButtonStyle(int resId){
-        if (toggleButton!=null) {
+     * 设置toggleButton的样式
+     *
+     */
+    public void setToggleButtonStyle(int resId) {
+        if (toggleButton != null) {
             toggleButton.setButtonDrawable(resId);
         }
     }
