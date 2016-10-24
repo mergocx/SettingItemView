@@ -20,7 +20,7 @@
     2,可以在xml文件中设置,也可以在Java代码中设置
  
 #### 二、截图
-     ![](https://github.com/starmeigo/SettingItem/raw/master/example/example.png)  
+![](https://github.com/starmeigo/SettingItem/raw/master/example/example.png)  
 #### 三、使用
 
 **3.1 提供方法**
