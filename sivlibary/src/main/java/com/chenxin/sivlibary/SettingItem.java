@@ -23,6 +23,10 @@ import static android.content.ContentValues.TAG;
 
 public class SettingItem extends LinearLayout {
 
+    public static final int DefaultTextSize = 16;
+    public static final int DefaultTextColor = Color.BLACK;
+    public static final int DefaultHighTextSize = 18;
+
     private ImageView leftIcon;
     private ImageView rightIcon;
     private TextView leftTextView;
@@ -78,9 +82,9 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 监听SettingItem是否被点击
-    */
+     * 说明方法的作用
+     * 监听SettingItem是否被点击
+     */
     public interface OnSettingItemClick {
         void onSettingItemClick();
     }
@@ -119,49 +123,43 @@ public class SettingItem extends LinearLayout {
         setDescendantFocusability(FOCUS_BLOCK_DESCENDANTS);
         if (attrs != null) {
             TypedArray tArray = context.obtainStyledAttributes(attrs, R.styleable.SettingItem);
-            isLeftIcon = tArray.getBoolean(R.styleable.SettingItem_isLeftIcon, true);
-            leftIconId = tArray.getResourceId(R.styleable.SettingItem_leftIconId, 0);
-            leftIconWidth = tArray.getDimension(R.styleable.SettingItem_leftIconWidth, 0);
-            leftIconHeight = tArray.getDimension(R.styleable.SettingItem_leftIconHeight, 0);
-            leftIconMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftIconMarginLeft, 0);
+            isLeftIcon = tArray.getBoolean(R.styleable.SettingItem_isLeftIconCX, true);
+            leftIconId = tArray.getResourceId(R.styleable.SettingItem_leftIconIdCX, 0);
+            leftIconWidth = tArray.getDimension(R.styleable.SettingItem_leftIconWidthCX, 0);
+            leftIconHeight = tArray.getDimension(R.styleable.SettingItem_leftIconHeightCX, 0);
+            leftIconMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftIconMarginLeftCX, 0);
 
-            isLeftTextView = tArray.getBoolean(R.styleable.SettingItem_isLeftTextView, true);
-            leftText = tArray.getString(R.styleable.SettingItem_leftText);
-            leftTextMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftTextMarginLeft, 0);
+            isLeftTextView = tArray.getBoolean(R.styleable.SettingItem_isLeftTextViewCX, true);
+            leftText = tArray.getString(R.styleable.SettingItem_leftTextCX);
+            leftTextMarginLeft = tArray.getDimension(R.styleable.SettingItem_leftTextMarginLeftCX, 0);
 
-            isMainTextView = tArray.getBoolean(R.styleable.SettingItem_isMainTextView, true);
-            mainText = tArray.getString(R.styleable.SettingItem_mainText);
-            mainTextMarginTop = tArray.getLayoutDimension(R.styleable.SettingItem_mainTextMarginTop, 0);
+            isMainTextView = tArray.getBoolean(R.styleable.SettingItem_isMainTextViewCX, true);
+            mainText = tArray.getString(R.styleable.SettingItem_mainTextCX);
+            mainTextMarginTop = tArray.getLayoutDimension(R.styleable.SettingItem_mainTextMarginTopCX, 0);
 
-            isNextTextView = tArray.getBoolean(R.styleable.SettingItem_isNextTextView, false);
-            nextText = tArray.getString(R.styleable.SettingItem_nextText);
-            nextTextMarginBottom = tArray.getLayoutDimension(R.styleable.SettingItem_nextTextMarginBottom, 0);
+            isNextTextView = tArray.getBoolean(R.styleable.SettingItem_isNextTextViewCX, false);
+            nextText = tArray.getString(R.styleable.SettingItem_nextTextCX);
+            nextTextMarginBottom = tArray.getLayoutDimension(R.styleable.SettingItem_nextTextMarginBottomCX, 0);
 
-            isRightTextView = tArray.getBoolean(R.styleable.SettingItem_isRightTextView, true);
-            rightText = tArray.getString(R.styleable.SettingItem_rightText);
-            rightTextMarginRight = tArray.getLayoutDimension(R.styleable.SettingItem_rightTextMarginRight, 0);
+            isRightTextView = tArray.getBoolean(R.styleable.SettingItem_isRightTextViewCX, true);
+            rightText = tArray.getString(R.styleable.SettingItem_rightTextCX);
+            rightTextMarginRight = tArray.getLayoutDimension(R.styleable.SettingItem_rightTextMarginRightCX, 0);
 
-            isRightIcon = tArray.getBoolean(R.styleable.SettingItem_isRightIcon, true);
-            rightIconId = tArray.getResourceId(R.styleable.SettingItem_rightIconId, 0);
-            rightIconWidth = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconWidth, 0);
-            rightIconHeight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconHeight, 0);
-            rightIconMarginRight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconMarginRight, 0);
+            isRightIcon = tArray.getBoolean(R.styleable.SettingItem_isRightIconCX, true);
+            rightIconId = tArray.getResourceId(R.styleable.SettingItem_rightIconIdCX, 0);
+            rightIconWidth = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconWidthCX, 0);
+            rightIconHeight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconHeightCX, 0);
+            rightIconMarginRight = tArray.getLayoutDimension(R.styleable.SettingItem_rightIconMarginRightCX, 0);
 
-            isToggleButton = tArray.getBoolean(R.styleable.SettingItem_isToggleButton, false);
+            isToggleButton = tArray.getBoolean(R.styleable.SettingItem_isToggleButtonCX, false);
 
-            isRightFirst = tArray.getBoolean(R.styleable.SettingItem_isRightFirst, true);
+            isRightFirst = tArray.getBoolean(R.styleable.SettingItem_isRightFirstCX, true);
             tArray.recycle();
         }
     }
 
     private void initView() {
         setOrientation(HORIZONTAL);
-        rightIcon = new ImageView(context);
-        toggleButton = new ToggleButton(context);
-        leftTextView = new TextView(context);
-        rightTextView = new TextView(context);
-        mainTextView = new TextView(context);
-        nextTextView = new TextView(context);
     }
 
     /**
@@ -179,14 +177,15 @@ public class SettingItem extends LinearLayout {
             addView(leftIcon, leftIconParams);
         }
         if (isLeftTextView) {
+            leftTextView = new TextView(context);
             Log.e(TAG, "initLayout: leftText" + leftText);
             leftTextView.setText(leftText);
             LayoutParams leftTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             leftTextViewParams.gravity = Gravity.CENTER_VERTICAL;
             leftTextViewParams.leftMargin = (int) leftTextMarginLeft;
-            leftTextView.setTextSize(16);
-            leftTextView.setTextColor(Color.BLACK);
+            leftTextView.setTextSize(DefaultTextSize);
+            leftTextView.setTextColor(DefaultTextColor);
             addView(leftTextView, leftTextViewParams);
         }
         LinearLayout linearLayout = new LinearLayout(getContext());
@@ -195,21 +194,24 @@ public class SettingItem extends LinearLayout {
         llayoutParams.gravity = Gravity.CENTER;
         llayoutParams.weight = 1;
         if (isMainTextView) {
+            mainTextView = new TextView(context);
             mainTextView.setText(mainText);
             LayoutParams mainTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             mainTextViewParams.gravity = Gravity.CENTER_HORIZONTAL;
             mainTextViewParams.topMargin = (int) mainTextMarginTop;
-            mainTextView.setTextSize(18);
-            mainTextView.setTextColor(Color.BLACK);
+            mainTextView.setTextSize(DefaultHighTextSize);
+            mainTextView.setTextColor(DefaultTextColor);
             linearLayout.addView(mainTextView, mainTextViewParams);
             if (isNextTextView) {
+                nextTextView = new TextView(context);
                 nextTextView.setText(nextText);
                 LayoutParams nextTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 nextTextViewParams.gravity = Gravity.CENTER_HORIZONTAL;
                 nextTextViewParams.bottomMargin = (int) nextTextMarginBottom;
-                nextTextView.setTextSize(16);
+                nextTextView.setTextSize(DefaultTextSize);
+                nextTextView.setTextColor(DefaultTextColor);
                 linearLayout.addView(nextTextView, nextTextViewParams);
             }
         }
@@ -230,6 +232,7 @@ public class SettingItem extends LinearLayout {
      */
     private void initToggleButton() {
         if (isToggleButton) {
+            toggleButton = new ToggleButton(context);
             LayoutParams tButtonParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             tButtonParams.gravity = Gravity.CENTER_VERTICAL;
@@ -261,6 +264,7 @@ public class SettingItem extends LinearLayout {
      */
     private void initRightIcon() {
         if (isRightIcon) {
+            rightIcon = new ImageView(context);
             rightIcon.setImageResource(rightIconId);
             LayoutParams rightIconParams = new LayoutParams((int) rightIconWidth, (int) rightIconHeight);
             rightIconParams.gravity = Gravity.CENTER_VERTICAL;
@@ -275,13 +279,14 @@ public class SettingItem extends LinearLayout {
      */
     private void initRightText() {
         if (isRightTextView) {
+            rightTextView = new TextView(context);
             rightTextView.setText(rightText);
             LayoutParams rightTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             rightTextViewParams.gravity = Gravity.CENTER_VERTICAL;
             rightTextViewParams.rightMargin = (int) rightTextMarginRight;
-            rightTextView.setTextSize(16);
-            rightTextView.setTextColor(Color.BLACK);
+            rightTextView.setTextSize(DefaultTextSize);
+            rightTextView.setTextColor(DefaultTextColor);
             addView(rightTextView, rightTextViewParams);
         }
     }
@@ -364,100 +369,110 @@ public class SettingItem extends LinearLayout {
     }
 
     /**
-    * 说明方法的作用
-    * 设置左侧图标的显示与隐藏
-    */
+     * 说明方法的作用
+     * 设置左侧图标的显示与隐藏
+     */
     public void setLeftIcon(boolean hasLeftIcon) {
         if (leftIcon != null) {
             if (hasLeftIcon) {
                 leftIcon.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 leftIcon.setVisibility(View.GONE);
             }
         }
     }
 
     /**
-    * 说明方法的作用
-    *  设置右侧图标的显示与隐藏
-    */
+     * 说明方法的作用
+     * 设置右侧图标的显示与隐藏
+     */
     public void setRightIcon(boolean hasRightIcon) {
         if (rightIcon != null) {
             if (hasRightIcon) {
                 rightIcon.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 rightIcon.setVisibility(View.GONE);
             }
         }
     }
 
     /**
-    * 说明方法的作用
-    * 设置ToggleButton的现实与隐藏
-    */
+     * 说明方法的作用
+     * 设置ToggleButton的现实与隐藏
+     */
     public void setToggleButton(boolean hasToggleButton) {
         if (toggleButton != null) {
             if (hasToggleButton) {
                 toggleButton.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 toggleButton.setVisibility(View.GONE);
             }
         }
     }
 
     /**
-    * 说明方法的作用
-    * 设置左侧文字的显示与隐藏
-    */
+     * 说明方法的作用
+     * 设置左侧文字的显示与隐藏
+     */
     public void setLeftTextView(boolean hasLeftTextView) {
         if (leftTextView != null) {
             if (hasLeftTextView) {
                 leftTextView.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 leftTextView.setVisibility(View.GONE);
             }
         }
     }
 
     /**
-    * 说明方法的作用
-    * 设置右侧的文字显示与隐藏
-    */
+     * 说明方法的作用
+     * 设置右侧的文字显示与隐藏
+     */
     public void setRightTextView(boolean hasRightTextView) {
         if (rightTextView != null) {
             if (hasRightTextView) {
                 rightTextView.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 rightTextView.setVisibility(View.GONE);
             }
         }
     }
 
     /**
-    * 说明方法的作用
-    * 设置中间上方的文字显示与隐藏
-    */
+     * 说明方法的作用
+     * 设置中间上方的文字显示与隐藏
+     */
     public void setMainTextView(boolean hasMainTextView) {
-        if (mainTextView!=null) {
+        if (mainTextView != null) {
             if (hasMainTextView) {
                 mainTextView.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 mainTextView.setVisibility(View.GONE);
             }
         }
     }
 
     /**
-    * 说明方法的作用
-    * 设置中间下方的文字显示与隐藏
-    */
+     * 说明方法的作用
+     * 设置中间下方的文字显示与隐藏
+     */
     public void setNextTextView(boolean hasNextTextView) {
-        if (nextTextView!= null) {
+        if (nextTextView != null) {
             if (hasNextTextView) {
                 nextTextView.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 nextTextView.setVisibility(View.GONE);
             }
+        }
+    }
+
+    /**
+    * 说明方法的作用
+    * 设置toggleButton的样式
+    */
+    public void setToggleButtonStyle(int resId){
+        if (toggleButton!=null) {
+            toggleButton.setButtonDrawable(resId);
         }
     }
 }

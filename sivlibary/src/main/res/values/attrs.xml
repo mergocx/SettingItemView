@@ -2,36 +2,36 @@
 <resources>
     <declare-styleable name="SettingItem">
         <!--左图标的属性-->
-        <attr name="isLeftIcon" format="boolean"/>
-        <attr name="leftIconId" format="reference"/>
-        <attr name="leftIconWidth" format="dimension"/>
-        <attr name="leftIconHeight" format="dimension"/>
-        <attr name="leftIconMarginLeft" format="dimension"/>
+        <attr name="isLeftIconCX" format="boolean"/>
+        <attr name="leftIconIdCX" format="reference"/>
+        <attr name="leftIconWidthCX" format="dimension"/>
+        <attr name="leftIconHeightCX" format="dimension"/>
+        <attr name="leftIconMarginLeftCX" format="dimension"/>
         <!--左文字的属性-->
-        <attr name="isLeftTextView" format="boolean"/>
-        <attr name="leftText" format="string"/>
-        <attr name="leftTextMarginLeft" format="dimension"/>
+        <attr name="isLeftTextViewCX" format="boolean"/>
+        <attr name="leftTextCX" format="string"/>
+        <attr name="leftTextMarginLeftCX" format="dimension"/>
         <!--main文字的属性-->
-        <attr name="isMainTextView" format="boolean"/>
-        <attr name="mainText" format="string"/>
-        <attr name="mainTextMarginTop" format="dimension"/>
+        <attr name="isMainTextViewCX" format="boolean"/>
+        <attr name="mainTextCX" format="string"/>
+        <attr name="mainTextMarginTopCX" format="dimension"/>
         <!--next文字的属性-->
-        <attr name="isNextTextView" format="boolean"/>
-        <attr name="nextText" format="string"/>
-        <attr name="nextTextMarginBottom" format="dimension"/>
+        <attr name="isNextTextViewCX" format="boolean"/>
+        <attr name="nextTextCX" format="string"/>
+        <attr name="nextTextMarginBottomCX" format="dimension"/>
         <!--右文字的属性-->
-        <attr name="isRightTextView" format="boolean"/>
-        <attr name="rightText" format="string"/>
-        <attr name="rightTextMarginRight" format="dimension"/>
+        <attr name="isRightTextViewCX" format="boolean"/>
+        <attr name="rightTextCX" format="string"/>
+        <attr name="rightTextMarginRightCX" format="dimension"/>
         <!--右图标的属性-->
-        <attr name="isRightIcon" format="boolean"/>
-        <attr name="rightIconId" format="reference"/>
-        <attr name="rightIconWidth" format="dimension"/>
-        <attr name="rightIconHeight" format="dimension"/>
-        <attr name="rightIconMarginRight" format="dimension"/>
+        <attr name="isRightIconCX" format="boolean"/>
+        <attr name="rightIconIdCX" format="reference"/>
+        <attr name="rightIconWidthCX" format="dimension"/>
+        <attr name="rightIconHeightCX" format="dimension"/>
+        <attr name="rightIconMarginRightCX" format="dimension"/>
         <!--ToggleButton的属性-->
-        <attr name="isToggleButton" format="boolean"/>
+        <attr name="isToggleButtonCX" format="boolean"/>
         <!--右边文字和图片的位置-->
-        <attr name="isRightFirst" format="boolean"/>
+        <attr name="isRightFirstCX" format="boolean"/>
     </declare-styleable>
 </resources>
