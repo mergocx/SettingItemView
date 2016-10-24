@@ -11,7 +11,7 @@
 	}
   
 	dependencies {
-		compile 'com.github.starmeigo:SettingItemView:V1.0.1'
+		compile 'com.github.starmeigo:SettingItemView:V1.0.2'
 	}
 **1.2 功能说明**
 
