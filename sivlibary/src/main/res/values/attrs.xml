@@ -14,6 +14,7 @@
         <!--main文字的属性-->
         <attr name="isMainTextViewCX" format="boolean"/>
         <attr name="mainTextCX" format="string"/>
+        <attr name="mainTextMarginLeftCX" format="dimension"/>
         <attr name="mainTextMarginTopCX" format="dimension"/>
         <!--next文字的属性-->
         <attr name="isNextTextViewCX" format="boolean"/>

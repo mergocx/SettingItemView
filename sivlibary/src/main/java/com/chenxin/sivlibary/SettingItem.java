@@ -53,15 +53,19 @@ public class SettingItem extends LinearLayout {
     private String mainText;
     private String nextText;
     private float leftTextMarginLeft;
+    private float mainTextMarginLeft;
     private float mainTextMarginTop;
     private float nextTextMarginBottom;
     private float rightTextMarginRight;
+    private int mainTextGravity;
     private boolean isLeftTextView;
     private boolean isRightTextView;
     private boolean isMainTextView;
     private boolean isNextTextView;
     private OnToggleButtonChecked onToggleButtonChecked;
     private OnSettingItemClick onSettingItemClick;
+    private LayoutParams mainTextViewParams;
+    private LayoutParams nextTextViewParams;
 
     public void setOnSettingItemClick(OnSettingItemClick onSettingItemClick) {
         this.onSettingItemClick = onSettingItemClick;
@@ -135,6 +139,7 @@ public class SettingItem extends LinearLayout {
 
             isMainTextView = tArray.getBoolean(R.styleable.SettingItem_isMainTextViewCX, true);
             mainText = tArray.getString(R.styleable.SettingItem_mainTextCX);
+            mainTextMarginLeft = tArray.getDimension(R.styleable.SettingItem_mainTextMarginLeftCX,0);
             mainTextMarginTop = tArray.getLayoutDimension(R.styleable.SettingItem_mainTextMarginTopCX, 0);
 
             isNextTextView = tArray.getBoolean(R.styleable.SettingItem_isNextTextViewCX, false);
@@ -200,16 +205,17 @@ public class SettingItem extends LinearLayout {
         lLayoutParams.weight = 1;
         if (isMainTextView) {
             mainTextView.setText(mainText);
-            LayoutParams mainTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            mainTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             mainTextViewParams.gravity = Gravity.CENTER_HORIZONTAL;
             mainTextViewParams.topMargin = (int) mainTextMarginTop;
+            mainTextViewParams.leftMargin = (int) mainTextMarginLeft;
             mainTextView.setTextSize(DefaultHighTextSize);
             mainTextView.setTextColor(DefaultTextColor);
             linearLayout.addView(mainTextView, mainTextViewParams);
             if (isNextTextView) {
                 nextTextView.setText(nextText);
-                LayoutParams nextTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                nextTextViewParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
                 nextTextViewParams.gravity = Gravity.CENTER_HORIZONTAL;
                 nextTextViewParams.bottomMargin = (int) nextTextMarginBottom;
@@ -474,5 +480,23 @@ public class SettingItem extends LinearLayout {
         if (toggleButton != null) {
             toggleButton.setButtonDrawable(resId);
         }
+    }
+
+    /**
+    * 更改mainTextView摆放的位置
+    *
+    */
+    public void setMainTextViewParams(int gravityId,int leftMargin) {
+        mainTextViewParams.gravity = gravityId;
+        mainTextViewParams.leftMargin = leftMargin;
+    }
+
+    /**
+     * 更改nextTextView摆放的位置
+     *
+     */
+    public void setNextTextViewParams(int gravityId,int leftMargin) {
+        nextTextViewParams.gravity = gravityId;
+        nextTextViewParams.leftMargin = leftMargin;
     }
 }

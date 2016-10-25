@@ -3,6 +3,7 @@ package com.utouu.settingitem;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         settingItem.setLeftText("我很好", getResources().getColor(R.color.colorPrimary), 12);
         //settingItem.setLeftIcon(false);
         settingItem.setBackgroundResource(R.drawable.item_shape_normal);
+        SettingItem settingItem1 = (SettingItem) findViewById(R.id.settingItem1);
+        settingItem1.setMainTextViewParams(Gravity.CENTER_VERTICAL,10);
     }
 
     static class ViewHolder {
